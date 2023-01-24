@@ -5,17 +5,17 @@ import "./style.css";
 export default function BasicExample() {
   return (
     <div className="App">
-      <div>
-        <Carousel>
-          {Array(3)
-            .fill("")
-            .map((_, i) => (
-              <CarouselItem key={i}>
-                <div>{i}</div>
-              </CarouselItem>
-            ))}
-        </Carousel>
-      </div>
+      <Carousel showArrows showDots className="custom-class">
+        <CarouselItem className="custom-class-item">
+          <div>1</div>
+        </CarouselItem>
+        <CarouselItem className="custom-class-item">
+          <div>2</div>
+        </CarouselItem>
+        <CarouselItem className="custom-class-item">
+          <div>3</div>
+        </CarouselItem>
+      </Carousel>
     </div>
   );
 }
