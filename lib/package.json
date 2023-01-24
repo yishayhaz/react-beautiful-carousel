@@ -1,10 +1,10 @@
 {
   "name": "react-beautiful-carousel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An easy to use, beautiful carousel for React",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc && cp package.json README.md ./dist"
+    "build": "npm run clean && tsc && cp ../README.md . && cp package.json README.md ./dist"
   },
   "dependencies": {
     "react": "^18.2.0",
