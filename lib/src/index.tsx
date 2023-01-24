@@ -4,9 +4,9 @@ import { detectIfRtl } from "./utils";
 
 function Carousel({
   children,
+  showArrows,
+  showDots,
   className,
-  hideArrows,
-  hideDots,
   ...rest
 }: CarouselProps) {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -57,7 +57,7 @@ function Carousel({
         {children}
       </div>
 
-      {hideDots ? null : (
+      {!showDots ? null : (
         <div className="react-carousel__dots">
           {children.map((_, i) => (
             <button
@@ -69,7 +69,7 @@ function Carousel({
         </div>
       )}
 
-      {hideArrows ? null : (
+      {!showArrows ? null : (
         <>
           <button
             onClick={() => scrollByDir("left")}
