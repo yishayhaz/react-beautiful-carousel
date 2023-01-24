@@ -21,7 +21,7 @@
   border: 2px solid red;
 }
 
-.custom-class-item {
+.custom-class-item > div {
   height: 100%;
   font-size: 3rem;
 
