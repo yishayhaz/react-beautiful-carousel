@@ -3,30 +3,65 @@
 🔗 [Codesandbox Example](https://codesandbox.io/s/vigorous-smoke-90k9er?file=/src/App.js)
 
 ## Code Example
+
+`App.js`
 ```js
-<Carousel showArrows showDots className="custom-class">
-  <CarouselItem  className="custom-class-item">
-    <div>1</div>
-  </CarouselItem>
-  <CarouselItem  className="custom-class-item">
-    <div>2</div>
-  </CarouselItem>
-  <CarouselItem  className="custom-class-item">
-    <div>3</div>
-  </CarouselItem>
-</Carousel>
+import React from "react";
+import { Carousel, CarouselItem } from "react-beautiful-carousel";
+import "react-beautiful-carousel/style.css";
+import "./style.css";
+
+export default function App() {
+  return (
+    <div className="App">
+      <div className="wrraper">
+        <Carousel showArrows showDots className="custom-class">
+          <CarouselItem className="custom-class-item">
+            <div>1</div>
+          </CarouselItem>
+          <CarouselItem className="custom-class-item">
+            <div>2</div>
+          </CarouselItem>
+          <CarouselItem className="custom-class-item">
+            <div>3</div>
+          </CarouselItem>
+        </Carousel>
+      </div>
+    </div>
+  );
+}
 ```
 
+`style.css`
 ```css
-.custom-class {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  height: 100vh;
+  background-color: #f5f5f5;
+
+  display: grid;
+  place-items: center;
+}
+
+.wrraper {
   width: 500px;
   height: 200px;
+}
+
+/* Note:  you can use the default classNames, check it in the devtool */
+.custom-class {
+  border: 2px solid red;
 }
 
 .custom-class-item {
   height: 100%;
   font-size: 3rem;
-  
+
   display: grid;
   place-items: center;
 
