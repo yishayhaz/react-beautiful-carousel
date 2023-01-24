@@ -1,0 +1,93 @@
+.react-carousel__wrraper {
+  --dot-size: 10px;
+  --dot-color: 0, 0, 0;
+
+  --btn-arrow-bg: 0, 0, 0;
+
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+
+  &:hover {
+    .react-carousel__arrow {
+      color: rgba(var(--btn-arrow-bg), 0.9);
+      background-color: rgba(var(--btn-arrow-bg), 0.1);
+
+      &:hover {
+        background-color: rgba(var(--btn-arrow-bg), 0.2);
+      }
+    }
+  }
+}
+
+.react-carousel {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+
+  &__item {
+    min-width: 100%;
+    flex: 1;
+  }
+}
+
+.react-carousel__arrow {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 5%;
+
+  border: none;
+  outline: none;
+
+  color: transparent;
+  background-color: transparent;
+
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &.--left {
+    left: 0;
+    right: auto;
+  }
+  &.--right {
+    left: auto;
+    right: 0;
+  }
+}
+
+.react-carousel__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 5px;
+
+  & > button {
+    border: none;
+    outline: none;
+
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 50%;
+    cursor: pointer;
+
+    background-color: rgba(var(--dot-color), 0.2);
+
+    &:hover {
+      background-color: rgba(var(--dot-color), 0.4);
+    }
+    &.--active {
+      background-color: rgba(var(--dot-color), 0.8);
+    }
+  }
+}
