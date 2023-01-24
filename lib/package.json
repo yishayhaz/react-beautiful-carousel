@@ -1,0 +1,19 @@
+{
+  "name": "react-beautiful-carousel",
+  "version": "0.0.1",
+  "description": "An easy to use, beautiful carousel for React",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && cp package.json README.md ./dist"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "keywords": [
+    "react",
+    "carousel"
+  ],
+  "author": "Yishay Hazan",
+  "license": "ISC"
+}

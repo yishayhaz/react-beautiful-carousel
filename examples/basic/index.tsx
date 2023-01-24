@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel, CarouselItem } from "../../lib";
+import { Carousel, CarouselItem } from "../../lib/src";
 import "./style.css";
 
 export default function BasicExample() {
@@ -11,14 +11,7 @@ export default function BasicExample() {
             .fill("")
             .map((_, i) => (
               <CarouselItem key={i}>
-                <div
-                  style={{
-                    height: "100%",
-                    border: "1px solid black",
-                  }}
-                >
-                  {i}
-                </div>
+                <div>{i}</div>
               </CarouselItem>
             ))}
         </Carousel>

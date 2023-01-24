@@ -2,7 +2,13 @@ import React, { useRef, useState, useEffect } from "react";
 import { Tag, CarouselProps } from "./types";
 import { detectIfRtl } from "./utils";
 
-function Carousel({ children, className, ...rest }: CarouselProps) {
+function Carousel({
+  children,
+  className,
+  hideArrows,
+  hideDots,
+  ...rest
+}: CarouselProps) {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [active, _setActive] = useState(0);
 
@@ -51,27 +57,34 @@ function Carousel({ children, className, ...rest }: CarouselProps) {
         {children}
       </div>
 
-      <div className="react-carousel__dots">
-        {children.map((_, i) => (
+      {hideDots ? null : (
+        <div className="react-carousel__dots">
+          {children.map((_, i) => (
+            <button
+              onClick={() => scrollByIndex(i)}
+              className={active === i ? "--active" : ""}
+              key={i}
+            ></button>
+          ))}
+        </div>
+      )}
+
+      {hideArrows ? null : (
+        <>
           <button
-            onClick={() => scrollByIndex(i)}
-            className={active === i ? "--active" : ""}
-            key={i}
-          ></button>
-        ))}
-      </div>
-      <button
-        onClick={() => scrollByDir("left")}
-        className="react-carousel__arrow --left"
-      >
-        {"<"}
-      </button>
-      <button
-        onClick={() => scrollByDir("right")}
-        className="react-carousel__arrow --right"
-      >
-        {">"}
-      </button>
+            onClick={() => scrollByDir("left")}
+            className="react-carousel__arrow --left"
+          >
+            {"<"}
+          </button>
+          <button
+            onClick={() => scrollByDir("right")}
+            className="react-carousel__arrow --right"
+          >
+            {">"}
+          </button>
+        </>
+      )}
     </div>
   );
 }
