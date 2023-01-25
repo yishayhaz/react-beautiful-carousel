@@ -10,5 +10,5 @@
     "lib": ["es6", "dom", "es2017"],
     "moduleResolution": "node"
   },
-  "include": ["src", "lib", "lib"]
+  "include": ["src", "lib"]
 }

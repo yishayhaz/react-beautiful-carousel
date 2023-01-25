@@ -1,6 +1,6 @@
 {
   "name": "react-beautiful-carousel",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "An easy to use, beautiful carousel for React",
   "scripts": {
     "clean": "rm -rf dist",
