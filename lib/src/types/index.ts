@@ -6,4 +6,6 @@ export interface CarouselProps extends Tag {
   children: React.ReactElement[];
   showDots?: boolean;
   showArrows?: boolean;
+  arrowsProps?: Tag;
+  dotsProps?: Tag;
 }
