@@ -1,20 +1,14 @@
 {
   "compilerOptions": {
     "strict": true,
+    "noImplicitAny": true,
     "jsx": "react",
     "declaration": true,
     "esModuleInterop": true,
     "outDir": "dist",
     "target": "es6",
-    "module": "ESNext",
-    "lib": ["dom", "esnext"],
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noEmitOnError": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true
+    "module": "es6",
+    "moduleResolution": "node"
   },
   "include": ["src"]
 }

@@ -1,18 +1,13 @@
+/*
+  v0.5
+*/
+
 .react-carousel__wrraper {
-  --dot-size: 10px;
-  --dot-color: 0, 0, 0;
   --btn-arrow-bg: 0, 0, 0;
   position: relative;
   width: 100%;
   height: 100%;
   max-width: 100%;
-}
-.react-carousel__wrraper:hover .react-carousel__arrow {
-  color: rgba(var(--btn-arrow-bg), 0.9);
-  background-color: rgba(var(--btn-arrow-bg), 0.1);
-}
-.react-carousel__wrraper:hover .react-carousel__arrow:hover {
-  background-color: rgba(var(--btn-arrow-bg), 0.2);
 }
 
 .react-carousel {
@@ -30,14 +25,16 @@
 }
 
 .react-carousel__arrow {
+  --color: rgba(0, 0, 0);
+  --bg: rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 0;
   height: 100%;
   width: 5%;
   border: none;
   outline: none;
-  color: transparent;
-  background-color: transparent;
+  color: var(--color);
+  background-color: var(--bg);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
@@ -49,8 +46,12 @@
   left: auto;
   right: 0;
 }
+.react-carousel__arrow:last-child {
+  transform: rotate(180deg);
+}
 
 .react-carousel__dots {
+  --size: 10px;
   position: absolute;
   left: 50%;
   bottom: 15px;
@@ -58,18 +59,32 @@
   display: flex;
   gap: 5px;
 }
+@media (prefers-color-scheme: dark) {
+  .react-carousel__dots {
+    --color: rgba(255, 255, 255, 0.2);
+    --hover-color: rgba(255, 255, 255, 0.4);
+    --active-color: rgb(255, 255, 255, 0.8);
+  }
+}
+@media (prefers-color-scheme: light) {
+  .react-carousel__dots {
+    --color: rgba(0, 0, 0, 0.2);
+    --hover-color: rgba(0, 0, 0, 0.4);
+    --active-color: rgb(0, 0, 0, 0.8);
+  }
+}
 .react-carousel__dots > button {
   border: none;
   outline: none;
-  width: var(--dot-size);
-  height: var(--dot-size);
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   cursor: pointer;
-  background-color: rgba(var(--dot-color), 0.2);
+  background-color: var(--color);
 }
 .react-carousel__dots > button:hover {
-  background-color: rgba(var(--dot-color), 0.4);
+  background-color: var(--hover-color);
 }
 .react-carousel__dots > button.--active {
-  background-color: rgba(var(--dot-color), 0.8);
+  background-color: var(--active-color);
 }

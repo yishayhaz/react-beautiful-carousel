@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { CarouselProps } from "../types";
+import CarouselArrows from "./parts/arrows";
+import CarouselDots from "./parts/dots";
 import { detectIfRtl, getChildWidth } from "../utils";
 
 export default function Carousel({
@@ -46,38 +48,27 @@ export default function Carousel({
   }, [active]);
 
   return (
-    <div className={`react-carousel__wrraper ${className || ""}`} {...rest}>
+    <div {...rest} className={`react-carousel__wrraper ${className || ""}`}>
       <div ref={carouselRef} className={`react-carousel`}>
         {children}
       </div>
 
       {!showDots ? null : (
-        <div className="react-carousel__dots">
-          {children.map((_, i) => (
-            <button
-              onClick={() => scrollByIndex(i)}
-              className={active === i ? "--active" : ""}
-              key={i}
-            ></button>
-          ))}
-        </div>
+        <CarouselDots
+          length={children.length}
+          active={active}
+          scrollTo={scrollByIndex}
+          {...dotsProps}
+        />
       )}
 
       {!showArrows ? null : (
-        <>
-          <button
-            onClick={() => scrollByDir("left")}
-            className="react-carousel__arrow --left"
-          >
-            {"<"}
-          </button>
-          <button
-            onClick={() => scrollByDir("right")}
-            className="react-carousel__arrow --right"
-          >
-            {">"}
-          </button>
-        </>
+        <CarouselArrows
+          active={active}
+          length={children.length}
+          scrollTo={scrollByIndex}
+          {...arrowsProps}
+        />
       )}
     </div>
   );
