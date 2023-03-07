@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { CarouselProps } from "../types";
-import CarouselArrows from "./parts/arrows";
-import CarouselDots from "./parts/dots";
+import CarouselArrows from "../parts/arrows";
+import CarouselDots from "../parts/dots";
 import { detectIfRtl, getChildWidth } from "../utils";
 
-export default function Carousel({
+export function Carousel({
   children,
   showArrows,
   arrowsProps,
@@ -23,16 +23,6 @@ export default function Carousel({
     _setActive(i);
   };
 
-  const scrollByDir = (dir: string = "left") => {
-    const isRtl = detectIfRtl(carouselRef.current);
-
-    if (dir === "left") {
-      scrollByIndex(active - 1 * isRtl);
-    } else {
-      scrollByIndex(active + 1 * isRtl);
-    }
-  };
-
   const scroll = (i: number) => {
     const width = getChildWidth(carouselRef.current);
 
@@ -48,7 +38,7 @@ export default function Carousel({
   }, [active]);
 
   return (
-    <div {...rest} className={`react-carousel__wrraper ${className || ""}`}>
+    <div {...rest} className={`react-carousel__wrapper ${className || ""}`}>
       <div ref={carouselRef} className={`react-carousel`}>
         {children}
       </div>

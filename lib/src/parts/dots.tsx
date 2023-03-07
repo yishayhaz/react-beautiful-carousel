@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react";
-import { CarouselDotsProps } from "../../types";
+import { CarouselDotsProps } from "../types";
 
 export default function CarouselDots({
   length,

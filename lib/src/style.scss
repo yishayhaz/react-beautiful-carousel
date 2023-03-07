@@ -1,5 +1,20 @@
-.react-carousel__wrraper {
-  --btn-arrow-bg: 0, 0, 0;
+.react-carousel__wrapper {
+  @media (prefers-color-scheme: light) {
+    --dot-color: rgba(0, 0, 0, 0.2);
+    --dot-hover-color: rgba(0, 0, 0, 0.4);
+    --dot-active-color: rgb(0, 0, 0, 0.8);
+
+    --arrow-color: black;
+    --arrow-bg: white;
+  }
+  @media (prefers-color-scheme: dark) {
+    --dot-color: rgba(255, 255, 255, 0.2);
+    --dot-hover-color: rgba(255, 255, 255, 0.4);
+    --dot-active-color: rgb(255, 255, 255, 0.8);
+
+    --arrow-color: white;
+    --arrow-bg: black;
+  }
 
   position: relative;
 
@@ -25,49 +40,49 @@
 }
 
 .react-carousel__arrow {
-  --color: rgba(0, 0, 0);
-  --bg: rgba(0, 0, 0, 0.1);
-
   position: absolute;
-  top: 0;
-  height: 100%;
-  width: 5%;
+  top: 50%;
 
-  border: none;
+  height: min(20%, 100px);
+  aspect-ratio: 1;
+
   outline: none;
+  border: none;
 
-  color: var(--color);
-  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  color: var(--arrow-color);
+  background-color: var(--arrow-bg);
+
+  box-shadow: 0 0 1px 0 currentColor;
 
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 
+  &:disabled {
+    display: none;
+  }
   &.--left {
     left: 0;
     right: auto;
+    translate: -50% -50%;
   }
   &.--right {
     left: auto;
     right: 0;
+    translate: 50% -50%;
   }
   &:last-child {
-    transform: rotate(180deg);
+    rotate: 180deg;
   }
 }
 
 .react-carousel__dots {
   --size: 10px;
-
-  @media (prefers-color-scheme: dark) {
-    --color: rgba(255, 255, 255, 0.2);
-    --hover-color: rgba(255, 255, 255, 0.4);
-    --active-color: rgb(255, 255, 255, 0.8);
-  }
-  @media (prefers-color-scheme: light) {
-    --color: rgba(0, 0, 0, 0.2);
-    --hover-color: rgba(0, 0, 0, 0.4);
-    --active-color: rgb(0, 0, 0, 0.8);
-  }
 
   position: absolute;
   left: 50%;
@@ -86,13 +101,13 @@
     border-radius: 50%;
     cursor: pointer;
 
-    background-color: var(--color);
+    background-color: var(--dot-color);
 
     &:hover {
-      background-color: var(--hover-color);
+      background-color: var(--dot-hover-color);
     }
     &.--active {
-      background-color: var(--active-color);
+      background-color: var(--dot-active-color);
     }
   }
 }

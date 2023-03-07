@@ -1,18 +1,16 @@
 import React, { CSSProperties } from "react";
-import { CarouselArrowProps } from "../../types";
-import { detectIfRtl } from "../../utils";
+import { CarouselArrowProps } from "../types";
+import { detectIfRtl } from "../utils";
+import { ArrowIcon } from "../assets/arrow";
 
 export default function CarouselArrows({
   active,
   length,
   scrollTo,
-
   className,
-
   color,
   bg,
-
-  arrowIcon,
+  arrowIcon = <ArrowIcon />,
 }: CarouselArrowProps) {
   const isRtl = detectIfRtl() === -1;
 
@@ -27,12 +25,12 @@ export default function CarouselArrows({
         disabled={active === 0}
         style={
           {
-            "--color": color,
-            "--bg": bg,
+            "--arrow-color": color,
+            "--arrow-bg": bg,
           } as CSSProperties
         }
       >
-        {arrowIcon || <span>{"<"}</span>}
+        {arrowIcon}
       </button>
       <button
         aria-label={`Go to previous slide`}
@@ -43,8 +41,8 @@ export default function CarouselArrows({
         disabled={active === length - 1}
         style={
           {
-            "--color": color,
-            "--bg": bg,
+            "--arrow-color": color,
+            "--arrow-bg": bg,
           } as CSSProperties
         }
       >
