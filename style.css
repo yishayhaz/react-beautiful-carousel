@@ -1,0 +1,112 @@
+/*
+  v0.5.0
+*/
+
+/*
+  base
+*/
+.react-carousel__wrapper {
+  --dot-size: 10px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+@media (prefers-color-scheme: light) {
+  .react-carousel__wrapper {
+    --dot-color: rgba(0, 0, 0, 0.2);
+    --dot-hover-color: rgba(0, 0, 0, 0.4);
+    --dot-active-color: rgb(0, 0, 0, 0.8);
+    --arrow-color: rgba(0, 0, 0);
+    --arrow-bg: rgba(255, 255, 255);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .react-carousel__wrapper {
+    --dot-color: rgba(255, 255, 255, 0.2);
+    --dot-hover-color: rgba(255, 255, 255, 0.4);
+    --dot-active-color: rgb(255, 255, 255, 0.8);
+    --arrow-color: rgba(255, 255, 255);
+    --arrow-bg: rgba(0, 0, 0);
+  }
+}
+
+.react-carousel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+/*
+  basic
+*/
+.--basic .react-carousel__item {
+  min-width: 100%;
+}
+
+/*
+  slider
+*/
+/* .--slider {} */
+
+/*
+  arrow
+*/
+.react-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--arrow-color);
+  background-color: var(--arrow-bg);
+  box-shadow: 0 0 1px 0 currentColor;
+  cursor: pointer;
+}
+.react-carousel__arrow:disabled {
+  display: none;
+}
+.react-carousel__arrow.--left {
+  left: 0;
+  right: auto;
+  translate: -50% -50%;
+}
+.react-carousel__arrow.--right {
+  left: auto;
+  right: 0;
+  translate: 50% -50%;
+  rotate: 180deg;
+}
+
+/*
+  dots
+*/
+.react-carousel__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+.react-carousel__dots > button {
+  border: none;
+  outline: none;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--dot-color);
+}
+.react-carousel__dots > button:hover {
+  background-color: var(--dot-hover-color);
+}
+.react-carousel__dots > button.--active {
+  background-color: var(--dot-active-color);
+}

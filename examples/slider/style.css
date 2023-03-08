@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* direction: rtl; */
+}
+
+.Slider {
+  height: 100vh;
+  background: #00111a;
+
+  display: grid;
+  place-items: center;
+}
+
+.Slider .wrraper {
+  width: 500px;
+  height: 200px;
+
+  box-shadow: 0 0 2px 0 #aae3ff;
+}
+
+.Slider .custom-class-item {
+  display: grid;
+  place-items: center;
+  background: #00111a;
+}
+
+.Slider .custom-class-item > div {
+  height: 100%;
+  width: 100%;
+  background: #00111a;
+  color: #aae3ff;
+
+  font-size: 3rem;
+
+  display: grid;
+  place-items: center;
+
+  box-shadow: 0 0 2px 0 #aae3ff;
+}

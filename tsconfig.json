@@ -6,9 +6,15 @@
     "esModuleInterop": true,
     "outDir": "dist",
     "target": "es6",
-    "module": "es6",
-    "lib": ["es6", "dom", "es2017"],
-    "moduleResolution": "node"
+    "module": "ESNext",
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noEmitOnError": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true
   },
-  "include": ["src", "lib", "lib"]
+  "include": ["src", "lib"]
 }

@@ -1,0 +1,28 @@
+.react-carousel__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 5px;
+
+  & > button {
+    border: none;
+    outline: none;
+
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 50%;
+    cursor: pointer;
+
+    background-color: var(--dot-color);
+
+    &:hover {
+      background-color: var(--dot-hover-color);
+    }
+    &.--active {
+      background-color: var(--dot-active-color);
+    }
+  }
+}

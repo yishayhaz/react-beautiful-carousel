@@ -5,6 +5,7 @@
 ## Code Example
 
 `App.js`
+
 ```js
 import React from "react";
 import { Carousel, CarouselItem } from "react-beautiful-carousel";
@@ -33,6 +34,7 @@ export default function App() {
 ```
 
 `style.css`
+
 ```css
 * {
   margin: 0;
@@ -71,16 +73,27 @@ export default function App() {
 
 ## Carousel
 
-| **props**  | **type**                          | **description**                                      | **default** |
-|------------|-----------------------------------|------------------------------------------------------|-------------|
-| children   | React.ReactElement[]              | an array of `CarouselItem`                           | []          |
-| showArrows | boolean                           | will show the (horizontal) arrows                    | false       |
-| showDots   | boolean                           | will show the dots to easily navigate between items  | false       |
-| ...rest    | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute.                      | undefind    |
+| **props**   | **type**                          | **description**                                     | **default** |
+| ----------- | --------------------------------- | --------------------------------------------------- | ----------- |
+| children    | React.ReactElement[]              | an array of `CarouselItem`                          | []          |
+| showArrows  | boolean                           | will show the (horizontal) arrows                   | false       |
+| arrowsProps | CarouselArrowProps                | customize arrows by colors, classes, etc            | false       |
+| showDots    | boolean                           | will show the dots to easily navigate between items | false       |
+| dotsProps   | CarouselDotsProps                 | customize dots by colors, size, classes, etc        | false       |
+| ...rest     | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute.                     | undefind    |
 
 ## CarouselItem
 
-| **props** | **type**                           | **description**                | **default** |
-|-----------|------------------------------------|--------------------------------|-------------|
-| children  | React.ReactNode                    | any jsx elements               | undefind    |
-| ...rest   | React.HTMLAttributes<HTMLElement>  | any other valid HTML attribute.| undefind    |
+| **props** | **type**                          | **description**                 | **default** |
+| --------- | --------------------------------- | ------------------------------- | ----------- |
+| children  | React.ReactNode                   | any jsx elements                | undefind    |
+| ...rest   | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute. | undefind    |
+
+## CarouselSlider
+
+| **props**   | **type**                          | **description**                          | **default** |
+| ----------- | --------------------------------- | ---------------------------------------- | ----------- |
+| children    | React.ReactElement[]              | an array of `CarouselItem`               | []          |
+| showArrows  | boolean                           | will show the (horizontal) arrows        | false       |
+| arrowsProps | CarouselArrowProps                | customize arrows by colors, classes, etc | false       |
+| ...rest     | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute.          | undefind    |
