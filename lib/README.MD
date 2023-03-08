@@ -88,3 +88,12 @@ export default function App() {
 | --------- | --------------------------------- | ------------------------------- | ----------- |
 | children  | React.ReactNode                   | any jsx elements                | undefind    |
 | ...rest   | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute. | undefind    |
+
+## CarouselSlider
+
+| **props**   | **type**                          | **description**                          | **default** |
+| ----------- | --------------------------------- | ---------------------------------------- | ----------- |
+| children    | React.ReactElement[]              | an array of `CarouselItem`               | []          |
+| showArrows  | boolean                           | will show the (horizontal) arrows        | false       |
+| arrowsProps | CarouselArrowProps                | customize arrows by colors, classes, etc | false       |
+| ...rest     | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute.          | undefind    |
