@@ -5,13 +5,18 @@ export const useCarousel = (initialActive = 0) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(initialActive);
 
-  const scrollTo = (i: number, itemsPerPage: number = 1, gap: number = 0) => {
-    const len = getChildrensLength(carouselRef.current);
+  // toIdx: 10, itemsPerSlide=5, active: 10, len: 20
+  // 1-5, 6-10, 11-15, 16-20
+  const scrollTo = (toIdx: number, itemsPerSlide: number = 1) => {
+    if (toIdx > active) {
+      const len = getChildrensLength(carouselRef.current);
 
-    if (i < 0) i = 0;
-    if (i > len - 1) i = len - 1;
+      toIdx = Math.min(toIdx + itemsPerSlide - 1, len - itemsPerSlide);
+    } else if (toIdx < active) {
+      toIdx = Math.max(toIdx - itemsPerSlide + 1, 0);
+    }
 
-    setActive(i);
+    setActive(toIdx);
   };
 
   const scroll = (i: number) => {

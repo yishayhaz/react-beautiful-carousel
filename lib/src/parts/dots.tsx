@@ -2,7 +2,7 @@ import React, { CSSProperties } from "react";
 import { CarouselDotsProps } from "../types";
 
 export default function CarouselDots({
-  length,
+  len,
   active,
   scrollTo,
 
@@ -16,7 +16,7 @@ export default function CarouselDots({
 }: CarouselDotsProps) {
   return (
     <div className="react-carousel__dots">
-      {Array(length)
+      {Array(len)
         .fill(0)
         .map((_, i) => (
           <button

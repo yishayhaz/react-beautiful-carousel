@@ -6,8 +6,7 @@ import { useCarousel } from "../hooks/useCarousel";
 export function CarouselSlider({
   children,
   arrowsProps,
-  itemsPerSlide,
-  gap,
+  itemsPerSlide = 1,
   className,
   ...rest
 }: CarouselSliderProps) {
@@ -24,8 +23,8 @@ export function CarouselSlider({
 
       <CarouselArrows
         active={active}
-        length={children.length}
-        scrollTo={(i) => scrollTo(i, itemsPerSlide, gap)}
+        len={children.length - itemsPerSlide + 1}
+        scrollTo={(i) => scrollTo(i, itemsPerSlide)}
         {...arrowsProps}
       />
     </div>

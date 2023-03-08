@@ -5,7 +5,7 @@ import { ArrowIcon } from "../assets/arrow";
 
 export default function CarouselArrows({
   active,
-  length,
+  len,
   scrollTo,
   className,
   color,
@@ -42,7 +42,7 @@ export default function CarouselArrows({
         className={`react-carousel__arrow ${isRtl ? "--left" : "--right"} ${
           className || ""
         }`}
-        disabled={active === length - 1}
+        disabled={active === len - 1}
         style={
           {
             "--arrow-color": color,
@@ -50,7 +50,7 @@ export default function CarouselArrows({
           } as React.CSSProperties
         }
       >
-        {arrowIcon || <span>{"<"}</span>}
+        {arrowIcon}
       </button>
     </div>
   );

@@ -14,12 +14,11 @@ export type CarouselSliderProps = Tag & {
   children: React.ReactElement[];
   arrowsProps?: ArrowProps;
   itemsPerSlide?: number;
-  gap?: number;
 };
 
 export interface CarouselItemProps {
   active: number;
-  length: number;
+  len: number;
   scrollTo: (index: number) => void;
 }
 

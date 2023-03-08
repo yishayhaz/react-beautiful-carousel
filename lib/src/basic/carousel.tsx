@@ -26,7 +26,7 @@ export function Carousel({
 
       {!showDots ? null : (
         <CarouselDots
-          length={children.length}
+          len={children.length}
           active={active}
           scrollTo={scrollTo}
           {...dotsProps}
@@ -36,7 +36,7 @@ export function Carousel({
       {!showArrows ? null : (
         <CarouselArrows
           active={active}
-          length={children.length}
+          len={children.length}
           scrollTo={scrollTo}
           {...arrowsProps}
         />
