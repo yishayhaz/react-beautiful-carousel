@@ -1,0 +1,37 @@
+.react-carousel__arrow {
+  position: absolute;
+  top: 50%;
+
+  height: 40px;
+  width: 40px;
+
+  outline: none;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  color: var(--arrow-color);
+  background-color: var(--arrow-bg);
+
+  box-shadow: 0 0 1px 0 currentColor;
+  cursor: pointer;
+
+  &:disabled {
+    display: none;
+  }
+  &.--left {
+    left: 0;
+    right: auto;
+    translate: -50% -50%;
+  }
+  &.--right {
+    left: auto;
+    right: 0;
+    translate: 50% -50%;
+    rotate: 180deg;
+  }
+}

@@ -1,0 +1,36 @@
+.react-carousel__wrapper {
+  --dot-size: 10px;
+
+  @media (prefers-color-scheme: light) {
+    --dot-color: rgba(0, 0, 0, 0.2);
+    --dot-hover-color: rgba(0, 0, 0, 0.4);
+    --dot-active-color: rgb(0, 0, 0, 0.8);
+
+    --arrow-color: rgba(0, 0, 0);
+    --arrow-bg: rgba(255, 255, 255);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --dot-color: rgba(255, 255, 255, 0.2);
+    --dot-hover-color: rgba(255, 255, 255, 0.4);
+    --dot-active-color: rgb(255, 255, 255, 0.8);
+
+    --arrow-color: rgba(255, 255, 255);
+    --arrow-bg: rgba(0, 0, 0);
+  }
+
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+}
+
+.react-carousel {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  scroll-behavior: smooth;
+
+  overflow: hidden;
+}

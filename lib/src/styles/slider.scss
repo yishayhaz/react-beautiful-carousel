@@ -1,0 +1,10 @@
+.--slider {
+  .react-carousel {
+    border: 1px solid black;
+  }
+
+  .react-carousel__item {
+    min-width: calc(25% - 10px);
+    margin-inline: 5px;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { useEffect, useState } from "react";
 import { CarouselArrowProps } from "../types";
 import { detectIfRtl } from "../utils";
 import { ArrowIcon } from "../assets/arrow";
@@ -12,10 +12,14 @@ export default function CarouselArrows({
   bg,
   arrowIcon = <ArrowIcon />,
 }: CarouselArrowProps) {
-  const isRtl = detectIfRtl() === -1;
+  const [isRtl, setIsRtl] = useState(false);
+
+  useEffect(() => {
+    setIsRtl(detectIfRtl());
+  }, []);
 
   return (
-    <>
+    <div>
       <button
         aria-label={`Go to next slide`}
         onClick={() => scrollTo(active - 1)}
@@ -27,7 +31,7 @@ export default function CarouselArrows({
           {
             "--arrow-color": color,
             "--arrow-bg": bg,
-          } as CSSProperties
+          } as React.CSSProperties
         }
       >
         {arrowIcon}
@@ -43,11 +47,11 @@ export default function CarouselArrows({
           {
             "--arrow-color": color,
             "--arrow-bg": bg,
-          } as CSSProperties
+          } as React.CSSProperties
         }
       >
         {arrowIcon || <span>{"<"}</span>}
       </button>
-    </>
+    </div>
   );
 }

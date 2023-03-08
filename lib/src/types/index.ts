@@ -10,6 +10,13 @@ export interface CarouselProps extends Tag {
   dotsProps?: DotsProps;
 }
 
+export type CarouselSliderProps = Tag & {
+  children: React.ReactElement[];
+  arrowsProps?: ArrowProps;
+  itemsPerSlide?: number;
+  gap?: number;
+};
+
 export interface CarouselItemProps {
   active: number;
   length: number;
@@ -17,8 +24,8 @@ export interface CarouselItemProps {
 }
 
 export interface DotsProps {
-  className?: React.HTMLAttributes<HTMLElement>["className"];
-  activeClassName?: React.HTMLAttributes<HTMLElement>["className"];
+  className?: Tag["className"];
+  activeClassName?: Tag["className"];
 
   size?: number;
   color?: CSSProperties["color"];
@@ -34,7 +41,10 @@ export interface ArrowProps {
   bg?: CSSProperties["color"];
 
   arrowIcon?: React.ReactNode;
+  size?: ArrowSize;
 }
+
+export type ArrowSize = "sm" | "md" | "lg";
 
 export interface CarouselDotsProps extends DotsProps, CarouselItemProps {}
 export interface CarouselArrowProps extends ArrowProps, CarouselItemProps {}
