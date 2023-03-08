@@ -4,13 +4,13 @@ import CarouselArrows from "../parts/arrows";
 import { setChildrensMinWidth } from "../utils";
 import { useCarousel } from "../hooks/useCarousel";
 
-export function CarouselSlider({
+export const CarouselSlider = ({
   children,
   arrowsProps,
   itemsPerSlide = 1,
   className,
   ...rest
-}: CarouselSliderProps) {
+}: CarouselSliderProps) => {
   const { carouselRef, active, scrollTo } = useCarousel();
 
   useEffect(() => {
@@ -35,4 +35,4 @@ export function CarouselSlider({
       />
     </div>
   );
-}
+};

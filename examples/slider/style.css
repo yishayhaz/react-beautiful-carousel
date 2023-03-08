@@ -16,7 +16,7 @@
   width: 500px;
   height: 200px;
 
-  box-shadow: 0 0 2px 0 #4cc1fa;
+  box-shadow: 0 0 2px 0 #aae3ff;
 }
 
 .Slider .custom-class-item {
@@ -26,15 +26,15 @@
 }
 
 .Slider .custom-class-item > div {
-  height: 80%;
-  width: 80%;
+  height: 100%;
+  width: 100%;
   background: #00111a;
-  color: #4cc1fa;
+  color: #aae3ff;
 
   font-size: 3rem;
 
   display: grid;
   place-items: center;
 
-  box-shadow: 0 0 2px 0 #4cc1fa;
+  box-shadow: 0 0 2px 0 #aae3ff;
 }

@@ -4,7 +4,7 @@ import CarouselArrows from "../parts/arrows";
 import CarouselDots from "../parts/dots";
 import { CarouselProps } from "../types";
 
-export function Carousel({
+export const Carousel = ({
   children,
   showArrows,
   arrowsProps,
@@ -12,7 +12,7 @@ export function Carousel({
   dotsProps,
   className,
   ...rest
-}: CarouselProps) {
+}: CarouselProps) => {
   const { carouselRef, active, scrollTo } = useCarousel();
 
   return (
@@ -43,4 +43,4 @@ export function Carousel({
       )}
     </div>
   );
-}
+};

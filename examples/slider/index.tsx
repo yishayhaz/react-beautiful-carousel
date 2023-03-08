@@ -9,8 +9,8 @@ export default function App() {
   return (
     <div className="App Slider">
       <div className="wrraper">
-        <CarouselSlider itemsPerSlide={4}>
-          {Array(20)
+        <CarouselSlider itemsPerSlide={5}>
+          {Array(22)
             .fill("")
             .map((_, i) => (
               <CarouselSliderItem key={i} className="custom-class-item">
