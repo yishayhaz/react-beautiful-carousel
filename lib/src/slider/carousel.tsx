@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CarouselSliderProps } from "../types";
 import CarouselArrows from "../parts/arrows";
+import { setChildrensMinWidth } from "../utils";
 import { useCarousel } from "../hooks/useCarousel";
 
 export function CarouselSlider({
@@ -11,6 +12,11 @@ export function CarouselSlider({
   ...rest
 }: CarouselSliderProps) {
   const { carouselRef, active, scrollTo } = useCarousel();
+
+  useEffect(() => {
+    if (!carouselRef.current) return;
+    setChildrensMinWidth(carouselRef.current, 100 / itemsPerSlide);
+  }, [carouselRef.current, itemsPerSlide]);
 
   return (
     <div
