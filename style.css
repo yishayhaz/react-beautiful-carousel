@@ -1,5 +1,5 @@
 /*
-  v0.5.0
+  v0.5.1
 */
 
 /*
@@ -28,6 +28,9 @@
     --arrow-color: rgba(255, 255, 255);
     --arrow-bg: rgba(0, 0, 0);
   }
+}
+.react-carousel__wrapper * {
+  box-sizing: border-box;
 }
 
 .react-carousel {

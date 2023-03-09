@@ -6,7 +6,8 @@ import { ArrowIcon } from "../assets/arrow";
 export default function CarouselArrows({
   active,
   len,
-  scrollToIndex,
+  scrollToNextFrame,
+  scrollToPrevFrame,
   className,
   color,
   bg,
@@ -22,7 +23,7 @@ export default function CarouselArrows({
     <div>
       <button
         aria-label={`Go to next slide`}
-        onClick={() => scrollToIndex(active - 1)}
+        onClick={() => scrollToPrevFrame()}
         className={`react-carousel__arrow ${isRtl ? "--right" : "--left"} ${
           className || ""
         }`}
@@ -38,7 +39,7 @@ export default function CarouselArrows({
       </button>
       <button
         aria-label={`Go to previous slide`}
-        onClick={() => scrollToIndex(active + 1)}
+        onClick={() => scrollToNextFrame()}
         className={`react-carousel__arrow ${isRtl ? "--left" : "--right"} ${
           className || ""
         }`}
