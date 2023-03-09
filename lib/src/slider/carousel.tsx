@@ -1,10 +1,13 @@
 import React, { useEffect, useImperativeHandle, forwardRef } from "react";
-import { CarouselSliderProps, CarouselSlider } from "../types";
+import { CarouselSliderProps, CarouselSliderRef } from "../types";
 import CarouselArrows from "../parts/arrows";
 import { setChildrensMinWidth } from "../utils";
 import { useCarousel } from "../hooks/useCarousel";
 
-export const CarouselSlider: CarouselSlider = forwardRef(
+export const CarouselSlider = forwardRef<
+  CarouselSliderRef,
+  CarouselSliderProps
+>(
   (
     {
       children,
@@ -13,10 +16,16 @@ export const CarouselSlider: CarouselSlider = forwardRef(
       itemsPerSlide = 1,
       className,
       ...rest
-    }: CarouselSliderProps,
+    },
     ref
   ) => {
-    const { carouselRef, active, scrollTo } = useCarousel();
+    const {
+      carouselRef,
+      active,
+      scrollToNextFrame,
+      scrollToPrevFrame,
+      scrollToIndex,
+    } = useCarousel();
 
     useEffect(() => {
       if (!carouselRef.current) return;
@@ -24,8 +33,10 @@ export const CarouselSlider: CarouselSlider = forwardRef(
     }, [carouselRef.current, itemsPerSlide]);
 
     useImperativeHandle(ref, () => ({
-      scrollTo: (i: number) => scrollTo(i, itemsPerSlide),
-      active: active,
+      scrollToPrevFrame: () => scrollToPrevFrame(itemsPerSlide),
+      scrollToNextFrame: () => scrollToNextFrame(itemsPerSlide),
+      scrollToIndex,
+      active,
     }));
 
     return (
@@ -41,7 +52,8 @@ export const CarouselSlider: CarouselSlider = forwardRef(
           <CarouselArrows
             active={active}
             len={children.length - itemsPerSlide + 1}
-            scrollTo={(i) => scrollTo(i, itemsPerSlide)}
+            scrollToNextFrame={() => scrollToNextFrame(itemsPerSlide)}
+            scrollToPrevFrame={() => scrollToPrevFrame(itemsPerSlide)}
             {...arrowsProps}
           />
         )}

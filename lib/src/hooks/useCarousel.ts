@@ -1,21 +1,28 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  CarouselScrollToIndex,
+  CarouselScrollToNextFrame,
+  CarouselScrollToPrevFrame,
+  UseCarouselHook,
+} from "../types";
 import { detectIfRtl, getChildWidth, getChildrensLength } from "../utils";
 
-export const useCarousel = (initialActive = 0) => {
+export const useCarousel: UseCarouselHook = (initialActive = 0) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(initialActive);
 
-  // toIdx: 10, itemsPerSlide=5, active: 10, len: 20
-  // 1-5, 6-10, 11-15, 16-20
-  const scrollTo = (toIdx: number, itemsPerSlide: number = 1) => {
-    if (toIdx > active) {
-      const len = getChildrensLength(carouselRef.current);
+  const scrollToIndex: CarouselScrollToIndex = (toIdx) => {
+    setActive(toIdx);
+  };
 
-      toIdx = Math.min(toIdx + itemsPerSlide - 1, len - itemsPerSlide);
-    } else if (toIdx < active) {
-      toIdx = Math.max(toIdx - itemsPerSlide + 1, 0);
-    }
+  const scrollToNextFrame: CarouselScrollToNextFrame = (itemsPerSlide = 1) => {
+    const len = getChildrensLength(carouselRef.current);
+    const toIdx = Math.min(active + itemsPerSlide, len - itemsPerSlide);
+    setActive(toIdx);
+  };
 
+  const scrollToPrevFrame: CarouselScrollToPrevFrame = (itemsPerSlide = 1) => {
+    const toIdx = Math.max(active - itemsPerSlide, 0);
     setActive(toIdx);
   };
 
@@ -35,8 +42,12 @@ export const useCarousel = (initialActive = 0) => {
 
   return {
     carouselRef,
+
+    scrollToIndex,
+    scrollToNextFrame,
+    scrollToPrevFrame,
+
     active,
     setActive,
-    scrollTo,
   };
 };

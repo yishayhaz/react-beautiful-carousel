@@ -4,7 +4,7 @@ import { CarouselDotsProps } from "../types";
 export default function CarouselDots({
   len,
   active,
-  scrollTo,
+  scrollToIndex,
 
   className,
   activeClassName,
@@ -21,7 +21,7 @@ export default function CarouselDots({
         .map((_, i) => (
           <button
             aria-label={`Go to slide ${i + 1}`}
-            onClick={() => scrollTo(i)}
+            onClick={() => scrollToIndex(i)}
             className={`${active === i ? "--active" : ""} ${className || ""} ${
               i === 0 ? activeClassName || "" : ""
             }`}

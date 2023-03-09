@@ -2,11 +2,6 @@ import React, { CSSProperties } from "react";
 
 export interface Tag extends React.HTMLAttributes<HTMLElement> {}
 
-export type CarouselSlider = React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  CarouselSliderProps
->;
-
 export interface CarouselProps extends Tag {
   children: React.ReactElement[];
   showDots?: boolean;
@@ -22,10 +17,31 @@ export type CarouselSliderProps = Tag & {
   itemsPerSlide?: number;
 };
 
+export type UseCarouselHook = (initialActive?: number) => {
+  carouselRef: React.RefObject<HTMLDivElement>;
+  scrollToIndex: CarouselScrollToIndex;
+  scrollToPrevFrame: CarouselScrollToPrevFrame;
+  scrollToNextFrame: CarouselScrollToNextFrame;
+
+  active: number;
+  setActive: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export type CarouselRef = {
+  scrollToIndex: CarouselScrollToIndex;
+  active: number;
+};
+
+export type CarouselSliderRef = {
+  scrollToNextFrame: CarouselScrollToNextFrame;
+  scrollToPrevFrame: CarouselScrollToPrevFrame;
+  scrollToIndex: CarouselScrollToIndex;
+  active: number;
+};
+
 export interface CarouselItemProps {
   active: number;
   len: number;
-  scrollTo: (index: number) => void;
 }
 
 export interface DotsProps {
@@ -51,5 +67,14 @@ export interface ArrowProps {
 
 export type ArrowSize = "sm" | "md" | "lg";
 
-export interface CarouselDotsProps extends DotsProps, CarouselItemProps {}
-export interface CarouselArrowProps extends ArrowProps, CarouselItemProps {}
+export interface CarouselDotsProps extends DotsProps, CarouselItemProps {
+  scrollToIndex: CarouselScrollToIndex;
+}
+export interface CarouselArrowProps extends ArrowProps, CarouselItemProps {
+  scrollToNextFrame: CarouselScrollToNextFrame;
+  scrollToPrevFrame: CarouselScrollToPrevFrame;
+}
+
+export type CarouselScrollToIndex = (index: number) => void;
+export type CarouselScrollToNextFrame = (itemsPerSlide?: number) => void;
+export type CarouselScrollToPrevFrame = (itemsPerSlide?: number) => void;
