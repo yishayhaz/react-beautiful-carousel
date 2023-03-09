@@ -23,6 +23,7 @@
   display: grid;
   place-items: center;
   background: #00111a;
+  border: 2px solid purple;
 }
 
 .Slider .custom-class-item > div {

@@ -2,6 +2,11 @@ import React, { CSSProperties } from "react";
 
 export interface Tag extends React.HTMLAttributes<HTMLElement> {}
 
+export type CarouselSlider = React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  CarouselSliderProps
+>;
+
 export interface CarouselProps extends Tag {
   children: React.ReactElement[];
   showDots?: boolean;
@@ -12,6 +17,7 @@ export interface CarouselProps extends Tag {
 
 export type CarouselSliderProps = Tag & {
   children: React.ReactElement[];
+  showArrows?: boolean;
   arrowsProps?: ArrowProps;
   itemsPerSlide?: number;
 };
