@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   /* direction: rtl; */
+  box-sizing: border-box;
 }
 
 .Slider {
@@ -13,8 +14,8 @@
 }
 
 .Slider .wrraper {
-  width: 500px;
-  height: 200px;
+  width: 100%;
+  padding-inline: 100px;
 
   box-shadow: 0 0 2px 0 #aae3ff;
 }
@@ -23,11 +24,12 @@
   display: grid;
   place-items: center;
   background: #00111a;
-  border: 2px solid purple;
+  border: 5px solid purple;
 }
 
 .Slider .custom-class-item > div {
-  height: 100%;
+  height: 200px;
+
   width: 100%;
   background: #00111a;
   color: #aae3ff;
@@ -38,4 +40,5 @@
   place-items: center;
 
   box-shadow: 0 0 2px 0 #aae3ff;
+  border: 5px solid green;
 }

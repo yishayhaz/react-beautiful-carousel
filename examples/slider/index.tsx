@@ -1,9 +1,9 @@
 import React from "react";
 // import { Carousel, CarouselItem } from "react-beautiful-carousel";
 // import "react-beautiful-carousel/style.css";
-import { CarouselSlider, CarouselSliderItem } from "../../lib/dist/slider";
-import { CarouselSliderRef } from "../../lib/dist/types";
-import "../../lib/dist/style.css";
+import { CarouselSlider, CarouselSliderItem } from "../../lib/src/slider";
+import { CarouselSliderRef } from "../../lib/src/types";
+import "../../lib/src/style.scss";
 import "./style.css";
 
 export default function App() {
@@ -28,8 +28,13 @@ export default function App() {
         </button>
       </div>
       <div className="wrraper">
-        <CarouselSlider itemsPerSlide={5} showArrows ref={ref}>
-          {Array(22)
+        <CarouselSlider
+          itemsPerSlide={5}
+          itemsMinWidth={180}
+          showArrows
+          ref={ref}
+        >
+          {Array(300)
             .fill("")
             .map((_, i) => (
               <CarouselSliderItem key={i} className="custom-class-item">

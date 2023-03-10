@@ -2,6 +2,8 @@ import React, { CSSProperties } from "react";
 
 export interface Tag extends React.HTMLAttributes<HTMLElement> {}
 
+export type CarouselSliderItemProps = Tag;
+
 export interface CarouselProps extends Tag {
   children: React.ReactElement[];
   showDots?: boolean;
@@ -15,6 +17,7 @@ export type CarouselSliderProps = Tag & {
   showArrows?: boolean;
   arrowsProps?: ArrowProps;
   itemsPerSlide?: number;
+  itemsMinWidth?: number;
 };
 
 export type UseCarouselHook = (initialActive?: number) => {
@@ -25,6 +28,11 @@ export type UseCarouselHook = (initialActive?: number) => {
 
   active: number;
   setActive: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export type UseWindowSizeSize = {
+  width: number | undefined;
+  height: number | undefined;
 };
 
 export type CarouselRef = {

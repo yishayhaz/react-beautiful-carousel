@@ -1,8 +1,14 @@
-import React, { useEffect, useImperativeHandle, forwardRef } from "react";
+import React, {
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+  useCallback,
+} from "react";
 import { CarouselSliderProps, CarouselSliderRef } from "../types";
 import CarouselArrows from "../parts/arrows";
-import { setChildrensMinWidth } from "../utils";
+import { setChildrensMinWidth, getOptimalItemsPerSlide } from "../utils";
 import { useCarousel } from "../hooks/useCarousel";
+import { useWindowSize } from "../hooks/useWindowSize";
 
 export const CarouselSlider = forwardRef<
   CarouselSliderRef,
@@ -14,6 +20,7 @@ export const CarouselSlider = forwardRef<
       showArrows,
       arrowsProps,
       itemsPerSlide = 1,
+      itemsMinWidth,
       className,
       ...rest
     },
@@ -26,11 +33,23 @@ export const CarouselSlider = forwardRef<
       scrollToPrevFrame,
       scrollToIndex,
     } = useCarousel();
+    const windowSize = useWindowSize();
+
+    const _itemsPerSlide = useCallback(() => {
+      if (!carouselRef.current) return itemsPerSlide;
+
+      return getOptimalItemsPerSlide(
+        carouselRef.current,
+        itemsPerSlide,
+        itemsMinWidth
+      );
+    }, [windowSize, itemsPerSlide, itemsMinWidth]);
 
     useEffect(() => {
       if (!carouselRef.current) return;
-      setChildrensMinWidth(carouselRef.current, 100 / itemsPerSlide);
-    }, [carouselRef.current, itemsPerSlide]);
+
+      setChildrensMinWidth(carouselRef.current, 100 / _itemsPerSlide());
+    }, [carouselRef.current, _itemsPerSlide()]);
 
     useImperativeHandle(ref, () => ({
       scrollToPrevFrame: () => scrollToPrevFrame(itemsPerSlide),
@@ -51,9 +70,9 @@ export const CarouselSlider = forwardRef<
         {!showArrows ? null : (
           <CarouselArrows
             active={active}
-            len={children.length - itemsPerSlide + 1}
-            scrollToNextFrame={() => scrollToNextFrame(itemsPerSlide)}
-            scrollToPrevFrame={() => scrollToPrevFrame(itemsPerSlide)}
+            len={children.length - _itemsPerSlide() + 1}
+            scrollToNextFrame={() => scrollToNextFrame(_itemsPerSlide())}
+            scrollToPrevFrame={() => scrollToPrevFrame(_itemsPerSlide())}
             {...arrowsProps}
           />
         )}
