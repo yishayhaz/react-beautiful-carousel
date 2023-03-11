@@ -4,6 +4,10 @@ export interface Tag extends React.HTMLAttributes<HTMLElement> {}
 
 export type CarouselSliderItemProps = Tag;
 
+export enum Attrs {
+  dataPerSlide = "data-items-per-slide",
+}
+
 export interface CarouselProps extends Tag {
   children: React.ReactElement[];
   showDots?: boolean;

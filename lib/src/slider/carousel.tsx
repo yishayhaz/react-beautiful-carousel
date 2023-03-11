@@ -4,7 +4,7 @@ import React, {
   forwardRef,
   useCallback,
 } from "react";
-import { CarouselSliderProps, CarouselSliderRef } from "../types";
+import { Attrs, CarouselSliderProps, CarouselSliderRef } from "../types";
 import CarouselArrows from "../parts/arrows";
 import { setChildrensMinWidth, getOptimalItemsPerSlide } from "../utils";
 import { useCarousel } from "../hooks/useCarousel";
@@ -33,6 +33,7 @@ export const CarouselSlider = forwardRef<
       scrollToPrevFrame,
       scrollToIndex,
     } = useCarousel();
+
     const windowSize = useWindowSize();
 
     const _itemsPerSlide = useCallback(() => {
@@ -48,8 +49,13 @@ export const CarouselSlider = forwardRef<
     useEffect(() => {
       if (!carouselRef.current) return;
 
-      setChildrensMinWidth(carouselRef.current, 100 / _itemsPerSlide());
-    }, [carouselRef.current, _itemsPerSlide()]);
+      carouselRef.current.setAttribute(
+        Attrs.dataPerSlide,
+        _itemsPerSlide().toString()
+      );
+
+      setChildrensMinWidth(carouselRef.current, _itemsPerSlide());
+    }, [carouselRef.current, _itemsPerSlide]);
 
     useImperativeHandle(ref, () => ({
       scrollToPrevFrame: () => scrollToPrevFrame(itemsPerSlide),

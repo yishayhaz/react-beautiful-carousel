@@ -9,8 +9,9 @@
   height: 100vh;
   background: #00111a;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Slider .wrraper {
@@ -18,6 +19,10 @@
   padding-inline: 100px;
 
   box-shadow: 0 0 2px 0 #aae3ff;
+}
+
+.Slider .wrraper > div {
+  border: 2px solid red;
 }
 
 .Slider .custom-class-item {
@@ -29,8 +34,8 @@
 
 .Slider .custom-class-item > div {
   height: 200px;
-
   width: 100%;
+
   background: #00111a;
   color: #aae3ff;
 

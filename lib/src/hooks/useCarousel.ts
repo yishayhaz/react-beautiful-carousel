@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  Attrs,
   CarouselScrollToIndex,
   CarouselScrollToNextFrame,
   CarouselScrollToPrevFrame,
   UseCarouselHook,
 } from "../types";
-import { detectIfRtl, getChildWidth, getChildrensLength } from "../utils";
+import { detectIfRtl, getChildrensLength } from "../utils";
 
 export const useCarousel: UseCarouselHook = (initialActive = 0) => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -29,7 +30,10 @@ export const useCarousel: UseCarouselHook = (initialActive = 0) => {
   const scroll = (i: number) => {
     if (!carouselRef.current) return;
 
-    const width = getChildWidth(carouselRef.current);
+    const itemsPerSlide =
+      Number(carouselRef.current.getAttribute(Attrs.dataPerSlide)) || 1;
+
+    const width = carouselRef.current.offsetWidth / itemsPerSlide;
 
     const isRtl = detectIfRtl(carouselRef.current) ? -1 : 1;
 
