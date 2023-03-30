@@ -44,7 +44,7 @@ export const CarouselSlider = forwardRef<
         itemsPerSlide,
         itemsMinWidth
       );
-    }, [windowSize, itemsPerSlide, itemsMinWidth]);
+    }, [windowSize, itemsPerSlide, itemsMinWidth, children.length]);
 
     useEffect(() => {
       if (!carouselRef.current) return;
@@ -73,7 +73,7 @@ export const CarouselSlider = forwardRef<
           {children}
         </div>
 
-        {!showArrows ? null : (
+        {!showArrows || itemsPerSlide >= children.length ? null : (
           <CarouselArrows
             active={active}
             len={children.length - _itemsPerSlide() + 1}
