@@ -37,21 +37,25 @@ export const useSwiper: UseSwiper = () => {
 
   useEffect(() => {
     window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("touchstart", onTouchStart);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("touchmove", onTouchMove);
     window.addEventListener("keyup", onKeyUp);
+
+    window.addEventListener("touchstart", onTouchStart);
     window.addEventListener("touchend", onTouchEnd);
     window.addEventListener("touchcancel", onTouchCancel);
 
+    window.addEventListener("touchmove", onTouchMove);
+    window.addEventListener("mousemove", onMouseMove);
+
     return () => {
       window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("keyup", onKeyUp);
+
+      window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchend", onTouchEnd);
       window.removeEventListener("touchcancel", onTouchCancel);
+
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("mousemove", onMouseMove);
     };
   }, [ref.current]);
 
