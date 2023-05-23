@@ -50,7 +50,7 @@ export const CarouselSlider = forwardRef<
       if (!carouselRef.current) return;
 
       carouselRef.current.setAttribute(
-        Attrs.dataPerSlide,
+        Attrs.itemsPerSlide,
         _itemsPerSlide().toString()
       );
 

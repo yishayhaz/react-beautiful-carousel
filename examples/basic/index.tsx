@@ -19,6 +19,9 @@ export default function App() {
           <CarouselItem className="custom-class-item">
             <div>3</div>
           </CarouselItem>
+          <CarouselItem className="custom-class-item">
+            <div>4</div>
+          </CarouselItem>
         </Carousel>
       </div>
     </div>

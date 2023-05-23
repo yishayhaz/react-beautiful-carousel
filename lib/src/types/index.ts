@@ -5,10 +5,11 @@ export interface Tag extends React.HTMLAttributes<HTMLElement> {}
 export type CarouselSliderItemProps = Tag;
 
 export enum Attrs {
-  dataPerSlide = "data-items-per-slide",
-  dragStartOffset = "data-drag-start-offset",
-  dragStartPageX = "data-drag-start-page-x",
-  crrScrollOffset = "data-crr-offset",
+  itemsPerSlide = "data-items-per-slide",
+  dragStartOffset = "data-start-offset",
+  crrScrollOffset = "data-scroll-offset",
+  dragStartPageX = "data-start-x",
+  animate = "data-animate",
 }
 
 export interface CarouselProps extends Tag {

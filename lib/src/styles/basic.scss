@@ -1,4 +1,8 @@
 .--basic {
+  [data-animate="true"] .react-carousel__item {
+    transition: 0.3s translate linear;
+  }
+
   .react-carousel__item {
     min-width: 100%;
   }
