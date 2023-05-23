@@ -1,5 +1,5 @@
 .--basic {
-  [data-animate="true"] .react-carousel__item {
+  & > div:not([data-disable-transition="true"]) .react-carousel__item {
     transition: 0.3s translate linear;
   }
 

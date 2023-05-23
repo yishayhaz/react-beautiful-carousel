@@ -13,6 +13,8 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
       showDots,
       dotsProps,
       className,
+      disableSwipe,
+      initialActive,
       ...rest
     },
     ref
@@ -24,7 +26,7 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
       scrollToNextFrame,
       isPressing,
       scrollToPrevFrame,
-    } = useCarousel();
+    } = useCarousel(initialActive, disableSwipe);
 
     useImperativeHandle(ref, () => ({
       scrollToIndex,
@@ -33,7 +35,6 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
 
     return (
       <>
-        <h2>{isPressing.toString()}</h2>
         <div
           {...rest}
           className={`react-carousel__wrapper --basic ${className || ""}`}

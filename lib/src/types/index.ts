@@ -9,7 +9,7 @@ export enum Attrs {
   dragStartOffset = "data-start-offset",
   crrScrollOffset = "data-scroll-offset",
   dragStartPageX = "data-start-x",
-  animate = "data-animate",
+  disableTransition = "data-disable-transition",
 }
 
 export interface CarouselProps extends Tag {
@@ -18,6 +18,8 @@ export interface CarouselProps extends Tag {
   showArrows?: boolean;
   arrowsProps?: ArrowProps;
   dotsProps?: DotsProps;
+  disableSwipe?: boolean;
+  initialActive?: number;
 }
 
 export type CarouselSliderProps = Tag & {
@@ -28,14 +30,17 @@ export type CarouselSliderProps = Tag & {
   itemsMinWidth?: number;
 };
 
-export type UseCarouselHook = (initialActive?: number) => {
+export type UseCarouselHook = (
+  initialActive?: number,
+  disableSwipe?: boolean
+) => {
   carouselRef: React.RefObject<HTMLDivElement>;
   scrollToIndex: CarouselScrollToIndex;
   scrollToPrevFrame: CarouselScrollToPrevFrame;
   scrollToNextFrame: CarouselScrollToNextFrame;
 
   active: number;
-  setActive: React.Dispatch<React.SetStateAction<number>>;
+  setActive: (idx: number) => void;
 
   isPressing: boolean;
 };

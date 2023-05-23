@@ -73,14 +73,16 @@ export default function App() {
 
 ## Carousel
 
-| **props**   | **type**                          | **description**                                     | **default** |
-| ----------- | --------------------------------- | --------------------------------------------------- | ----------- |
-| children    | React.ReactElement[]              | an array of `CarouselItem`                          | []          |
-| showArrows  | boolean                           | will show the (horizontal) arrows                   | false       |
-| arrowsProps | CarouselArrowProps                | customize arrows by colors, classes, etc            | false       |
-| showDots    | boolean                           | will show the dots to easily navigate between items | false       |
-| dotsProps   | CarouselDotsProps                 | customize dots by colors, size, classes, etc        | false       |
-| ...rest     | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute.                     | undefind    |
+| **props**     | **type**                          | **description**                                     | **default** |
+| ------------- | --------------------------------- | --------------------------------------------------- | ----------- |
+| children      | React.ReactElement[]              | an array of `CarouselItem`                          | []          |
+| showArrows    | boolean                           | will show the (horizontal) arrows                   | false       |
+| arrowsProps   | CarouselArrowProps                | customize arrows by colors, classes, etc            | false       |
+| showDots      | boolean                           | will show the dots to easily navigate between items | false       |
+| dotsProps     | CarouselDotsProps                 | customize dots by colors, size, classes, etc        | false       |
+| initialActive | number?                           | set first active frame                              | 0           |
+| disableSwipe  | boolean?                          | if true, the carousel won't be swipable             | false       |
+| ...rest       | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute.                     | undefind    |
 
 ## CarouselItem
 
@@ -90,6 +92,8 @@ export default function App() {
 | ...rest   | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute. | undefind    |
 
 ## CarouselSlider
+
+> DISABLED FOR NOW!!!
 
 | **props**   | **type**                          | **description**                          | **default** |
 | ----------- | --------------------------------- | ---------------------------------------- | ----------- |
