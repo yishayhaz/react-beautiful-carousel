@@ -52,9 +52,6 @@ export const useCarousel: UseCarouselHook = (initialActive = 0) => {
     const crrDragOffset =
       Number(getAttr(carouselRef.current, Attrs.crrScrollOffset)) || 0;
 
-    // * Save the current mouse position
-    // * Save the current translate value
-
     setAttr(
       carouselRef.current,
       Attrs.dragStartOffset,
@@ -77,7 +74,7 @@ export const useCarousel: UseCarouselHook = (initialActive = 0) => {
     if (!carouselRef.current) return;
 
     const { scrollWidth } = carouselRef.current;
-
+    const isRtl = detectIfRtl(carouselRef.current);
     const childWidth = scrollWidth / getChildrensLength(carouselRef.current);
 
     const crrDragOffset = Number(
@@ -87,14 +84,20 @@ export const useCarousel: UseCarouselHook = (initialActive = 0) => {
     setAttr(carouselRef.current, Attrs.animate, "true");
     setAttr(carouselRef.current, Attrs.dragStartPageX, "0");
 
-    if (crrDragOffset > 0) {
+    const maxEndDistance = isRtl
+      ? scrollWidth - childWidth
+      : -scrollWidth + childWidth;
+    const isBeforeStart = isRtl ? crrDragOffset < 0 : crrDragOffset > 0;
+    const isAfterEnd = isRtl
+      ? crrDragOffset > maxEndDistance
+      : crrDragOffset < maxEndDistance;
+
+    if (isBeforeStart) {
       console.log("snap before 0");
       return snapTo(carouselRef.current, 0);
     }
 
-    const maxEndDistance = -scrollWidth + childWidth;
-
-    if (crrDragOffset < maxEndDistance) {
+    if (isAfterEnd) {
       console.log("snap end");
       return snapTo(carouselRef.current, maxEndDistance);
     }
