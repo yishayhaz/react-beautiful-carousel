@@ -22,6 +22,7 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
       active,
       scrollToIndex,
       scrollToNextFrame,
+      isPressing,
       scrollToPrevFrame,
     } = useCarousel();
 
@@ -31,33 +32,36 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
     }));
 
     return (
-      <div
-        {...rest}
-        className={`react-carousel__wrapper --basic ${className || ""}`}
-      >
-        <div ref={carouselRef} className={`react-carousel`}>
-          {children}
+      <>
+        <h2>{isPressing.toString()}</h2>
+        <div
+          {...rest}
+          className={`react-carousel__wrapper --basic ${className || ""}`}
+        >
+          <div ref={carouselRef} className={`react-carousel`}>
+            {children}
+          </div>
+
+          {!showDots ? null : (
+            <CarouselDots
+              len={children.length}
+              active={active}
+              scrollToIndex={scrollToIndex}
+              {...dotsProps}
+            />
+          )}
+
+          {!showArrows ? null : (
+            <CarouselArrows
+              active={active}
+              len={children.length}
+              scrollToNextFrame={scrollToNextFrame}
+              scrollToPrevFrame={scrollToPrevFrame}
+              {...arrowsProps}
+            />
+          )}
         </div>
-
-        {!showDots ? null : (
-          <CarouselDots
-            len={children.length}
-            active={active}
-            scrollToIndex={scrollToIndex}
-            {...dotsProps}
-          />
-        )}
-
-        {!showArrows ? null : (
-          <CarouselArrows
-            active={active}
-            len={children.length}
-            scrollToNextFrame={scrollToNextFrame}
-            scrollToPrevFrame={scrollToPrevFrame}
-            {...arrowsProps}
-          />
-        )}
-      </div>
+      </>
     );
   }
 );

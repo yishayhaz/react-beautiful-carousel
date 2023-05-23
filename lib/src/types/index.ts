@@ -6,6 +6,9 @@ export type CarouselSliderItemProps = Tag;
 
 export enum Attrs {
   dataPerSlide = "data-items-per-slide",
+  dragStartOffset = "data-drag-start-offset",
+  dragStartPageX = "data-drag-start-page-x",
+  crrScrollOffset = "data-crr-offset",
 }
 
 export interface CarouselProps extends Tag {
@@ -32,6 +35,8 @@ export type UseCarouselHook = (initialActive?: number) => {
 
   active: number;
   setActive: React.Dispatch<React.SetStateAction<number>>;
+
+  isPressing: boolean;
 };
 
 export type UseWindowSizeSize = {

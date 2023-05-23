@@ -1,8 +1,8 @@
 import React from "react";
 // import { Carousel, CarouselItem } from "react-beautiful-carousel";
 // import "react-beautiful-carousel/style.css";
-import { Carousel, CarouselItem } from "../../lib/dist/basic";
-import "../../lib/dist/style.css";
+import { Carousel, CarouselItem } from "../../lib/src/basic";
+import "../../lib/src/style.scss";
 import "./style.css";
 
 export default function App() {
