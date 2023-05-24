@@ -93,11 +93,11 @@ export default function App() {
 
 ## CarouselSlider
 
-> DISABLED FOR NOW!!!
-
-| **props**   | **type**                          | **description**                          | **default** |
-| ----------- | --------------------------------- | ---------------------------------------- | ----------- |
-| children    | React.ReactElement[]              | an array of `CarouselItem`               | []          |
-| showArrows  | boolean                           | will show the (horizontal) arrows        | false       |
-| arrowsProps | CarouselArrowProps                | customize arrows by colors, classes, etc | false       |
-| ...rest     | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute.          | undefind    |
+| **props**     | **type**                          | **description**                          | **default** |
+| ------------- | --------------------------------- | ---------------------------------------- | ----------- |
+| children      | React.ReactElement[]              | an array of `CarouselItem`               | []          |
+| showArrows    | boolean                           | will show the (horizontal) arrows        | false       |
+| arrowsProps   | CarouselArrowProps                | customize arrows by colors, classes, etc | false       |
+| initialActive | number?                           | set first active frame                   | 0           |
+| disableSwipe  | boolean?                          | if true, the carousel won't be swipable  | false       |
+| ...rest       | React.HTMLAttributes<HTMLElement> | any other valid HTML attribute.          | undefind    |
