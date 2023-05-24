@@ -6,6 +6,6 @@ import BasicExample from "../examples/basic";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BasicExample />
-    {/* <SliderExample /> */}
+    <SliderExample />
   </React.StrictMode>
 );

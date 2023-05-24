@@ -9,6 +9,7 @@ import CarouselArrows from "../parts/arrows";
 import { setChildrensMinWidth, getOptimalItemsPerSlide } from "../utils";
 import { useCarousel } from "../hooks/useCarousel";
 import { useWindowSize } from "../hooks/useWindowSize";
+import { setAttr } from "../utils/setAttr";
 
 export const CarouselSlider = forwardRef<
   CarouselSliderRef,
@@ -22,6 +23,8 @@ export const CarouselSlider = forwardRef<
       itemsPerSlide = 1,
       itemsMinWidth,
       className,
+      initialActive,
+      disableSwipe,
       ...rest
     },
     ref
@@ -32,7 +35,7 @@ export const CarouselSlider = forwardRef<
       scrollToNextFrame,
       scrollToPrevFrame,
       scrollToIndex,
-    } = useCarousel();
+    } = useCarousel(initialActive, disableSwipe);
 
     const windowSize = useWindowSize();
 
@@ -49,7 +52,8 @@ export const CarouselSlider = forwardRef<
     useEffect(() => {
       if (!carouselRef.current) return;
 
-      carouselRef.current.setAttribute(
+      setAttr(
+        carouselRef.current,
         Attrs.itemsPerSlide,
         _itemsPerSlide().toString()
       );

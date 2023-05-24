@@ -92,9 +92,8 @@ export const useCarousel: UseCarouselHook = (
     setAttr(carouselRef.current, Attrs.disableTransition, "false");
     setIsPressing(false);
 
-    const { scrollWidth } = carouselRef.current;
+    const { scrollWidth, offsetWidth } = carouselRef.current;
     const isRtl = detectIfRtl(carouselRef.current);
-    const childWidth = scrollWidth / getChildrensLength(carouselRef.current);
 
     const crrDragOffset = Number(
       getAttr(carouselRef.current, Attrs.crrScrollOffset)
@@ -103,8 +102,8 @@ export const useCarousel: UseCarouselHook = (
     setAttr(carouselRef.current, Attrs.dragStartPageX, "0");
 
     const maxEndDistance = isRtl
-      ? scrollWidth - childWidth
-      : -scrollWidth + childWidth;
+      ? scrollWidth - offsetWidth
+      : -scrollWidth + offsetWidth;
 
     const isBeforeStart = isRtl ? crrDragOffset < 0 : crrDragOffset > 0;
 
@@ -119,7 +118,7 @@ export const useCarousel: UseCarouselHook = (
     } else {
       snapTo(
         carouselRef.current,
-        Math.round(crrDragOffset / childWidth) * childWidth
+        Math.round(crrDragOffset / offsetWidth) * offsetWidth
       );
     }
     _setActiveByPos();

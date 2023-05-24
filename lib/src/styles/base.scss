@@ -37,4 +37,8 @@
   scroll-behavior: smooth;
 
   overflow: hidden;
+
+  &:not([data-disable-transition="true"]) .react-carousel__item {
+    transition: 0.2s translate linear;
+  }
 }

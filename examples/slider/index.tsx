@@ -34,7 +34,7 @@ export default function App() {
           showArrows
           ref={ref}
         >
-          {Array(4)
+          {Array(6)
             .fill("")
             .map((_, i) => (
               <CarouselSliderItem key={i} className="custom-class-item">

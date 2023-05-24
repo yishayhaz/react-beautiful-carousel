@@ -28,6 +28,8 @@ export type CarouselSliderProps = Tag & {
   arrowsProps?: ArrowProps;
   itemsPerSlide?: number;
   itemsMinWidth?: number;
+  disableSwipe?: boolean;
+  initialActive?: number;
 };
 
 export type UseCarouselHook = (
