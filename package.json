@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-beautiful-carousel": "^0.0.22",
+    "react-beautiful-carousel": "^0.6.0",
     "react-dom": "^18.2.0",
     "sass": "^1.57.1"
   },

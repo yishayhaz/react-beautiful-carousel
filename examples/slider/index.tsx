@@ -1,9 +1,9 @@
 import React from "react";
 // import { Carousel, CarouselItem } from "react-beautiful-carousel";
 // import "react-beautiful-carousel/style.css";
-import { CarouselSlider, CarouselSliderItem } from "../../lib/src/slider";
-import { CarouselSliderRef } from "../../lib/src/types";
-import "../../lib/src/style.scss";
+import { CarouselSlider, CarouselSliderItem } from "../../lib/dist/slider";
+import { CarouselSliderRef } from "../../lib/dist/types";
+import "../../lib/dist/style.css";
 import "./style.css";
 
 export default function App() {
@@ -34,7 +34,7 @@ export default function App() {
           showArrows
           ref={ref}
         >
-          {Array(6)
+          {Array(12)
             .fill("")
             .map((_, i) => (
               <CarouselSliderItem key={i} className="custom-class-item">
